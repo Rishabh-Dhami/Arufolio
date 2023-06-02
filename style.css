@@ -101,6 +101,10 @@ span.active::after{
     background-color: goldenrod;
 }
 
+#cross{
+    display: none;
+}
+
 
 #navbar{
     display: flex;
@@ -1030,6 +1034,7 @@ h3{
 
 
 #cross{
+    display: initial;
     position: absolute;
     right: 40px;
     font-size: 40px;
