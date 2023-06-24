@@ -1,50 +1,36 @@
 // navbar section
 
 const navbar=document.querySelectorAll("#navbar a");
+const section=document.querySelectorAll('section')
 
-navbar[0].addEventListener('click',function(){
-    removeClass()
-    navbar[0].classList.add("active");
-})
+let current="";
+function myFunction(){
 
-navbar[1].addEventListener('click',function(){
-    removeClass()
-    navbar[1].classList.add("active");
-})
+    section.forEach(sec=>{
+        const sectionTop=sec.offsetTop;
+        const sectionHeight=sec.clientHeight;
 
-navbar[2].addEventListener('click',function(){
-    removeClass()
-    navbar[2].classList.add("active");
-})
-
-navbar[3].addEventListener('click',function(){
-    removeClass()
-    navbar[3].classList.add("active");
-})
-
-navbar[4].addEventListener('click',function(){
-    removeClass()
-    navbar[4].classList.add("active");
-})
-
-navbar[5].addEventListener('click',function(){
-    removeClass()
-    navbar[5].classList.add("active");
-})
-
-navbar[6].addEventListener('click',function(){
-    removeClass()
-    navbar[6].classList.add("active");
+        if(pageYOffset >= (sectionTop-sectionHeight/3)){
+            current=sec.getAttribute('id')
+        }
 })
 
 
-
-
-const removeClass=()=>{
-    navbar.forEach((nav)=>{
-        nav.classList.remove("active");
-    })
+navbar.forEach(nav=>{
+    nav.classList.remove('active')
+    if(nav.classList.contains(current)){
+        nav.classList.add('active')
+    }
+})
 }
+
+
+
+
+window.addEventListener('scroll',()=>{
+    myFunction()
+})
+
 
 // dropdown
 
@@ -82,36 +68,14 @@ slides.forEach((slide,index)=>{
 
 const button=document.querySelectorAll("#banner-1 .btn");
 
-button[0].addEventListener('click',function(){
-    slidediv(0);
-    checkbtn();
-    button[0].classList.add("btn-active")
+button.forEach((btn,index)=>{
+    btn.addEventListener('click',()=>{
+        checkbtn()
+        slidediv(index);
+        btn.classList.add("btn-active")
+    })
 })
 
-button[1].addEventListener('click',function(){
-    slidediv(1);
-    checkbtn();
-    button[1].classList.add("btn-active")
-})
-
-button[2].addEventListener('click',function(){
-    slidediv(2);
-    checkbtn();
-    button[2].classList.add("btn-active")
-})
-
-button[3].addEventListener('click',function(){
-    slidediv(3);
-    checkbtn();
-    button[3].classList.add("btn-active")
-})
-
-
-button[4].addEventListener('click',function(){
-    slidediv(4);
-    checkbtn();
-    button[4].classList.add("btn-active")
-})
 
 
 const checkbtn=()=>{
